@@ -8,18 +8,6 @@ public class Card : MonoBehaviour
     public CardScriptable cardScriptable;
     public Image img;
     
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void InitCard()
     {
@@ -31,8 +19,6 @@ public class Card : MonoBehaviour
 
     public void PlayCard()
     {
-        Debug.Log($"Player played {name} card");
-
         StartCoroutine(BattleSystem.Instance.OnCardButton(cardScriptable));
     }
 }

@@ -16,6 +16,10 @@ public class BattleSystem : MonoBehaviour
     public CardType badType;
     public GameObject cardPrefab;
     public TMP_Text timerTxt;
+
+    public int goodDamage;
+    public int okDamage;
+    public int badDamage;
     
     [Header("Player")]
     public GameObject playerPrefab;
@@ -23,6 +27,7 @@ public class BattleSystem : MonoBehaviour
     public Transform playerParent;
     public Transform cardZone;
     public float turnDuration;
+    public int critChance;
     
     private GameObject _player;
     private Player _playerScript;
@@ -69,8 +74,6 @@ public class BattleSystem : MonoBehaviour
 
     public void PlayerTurn()
     {
-        Debug.Log("Player Action");
-        
         int randomGoodJoke = Random.Range(0, Enum.GetValues(typeof(CardType)).Length);
         int randomBadJoke = Random.Range(0, Enum.GetValues(typeof(CardType)).Length);
         
@@ -79,11 +82,6 @@ public class BattleSystem : MonoBehaviour
 
         goodType = (CardType)randomGoodJoke;
         badType = (CardType)randomBadJoke;
-
-        if (goodType == badType)
-            Debug.LogError("Good type is the same as bad type");
-        
-        //TODO DRAW CARDS
         
         _playerScript.DrawHand();
 
@@ -112,15 +110,31 @@ public class BattleSystem : MonoBehaviour
     {
         Debug.Log($"Play card in {state}");
 
+        int randomCrit = Random.Range(1, 100);
+
         if (card.cardType == goodType)
         {
             if (state == BattleState.PlayerTurn)
             {
                 Debug.Log("Player is good");
+
+                if (randomCrit <= critChance)
+                {
+                    Debug.Log("Critical hit !");
+                    _enemyScript.life += Mathf.RoundToInt(goodDamage * 1.25f);
+                }
+                else
+                {
+                    _enemyScript.life += goodDamage;
+                }
+                 
+                _enemyScript.UpdateLifeSlider();
             }
             else
             {
                 Debug.Log("Enemy is good");
+                _playerScript.life += goodDamage;
+                _playerScript.UpdateLifeSlider();
             }
         }
         else if(card.cardType == badType)
@@ -128,10 +142,14 @@ public class BattleSystem : MonoBehaviour
             if (state == BattleState.PlayerTurn)
             {
                 Debug.Log("Player is bad");
+                _enemyScript.life += badDamage;
+                _enemyScript.UpdateLifeSlider();
             }
             else
             {
                 Debug.Log("Enemy is bad");
+                _playerScript.life += badDamage;
+                _playerScript.UpdateLifeSlider();
             }
         }
         else
@@ -139,10 +157,24 @@ public class BattleSystem : MonoBehaviour
             if (state == BattleState.PlayerTurn)
             {
                 Debug.Log("Player is ok");
+
+                if (randomCrit <= critChance)
+                {
+                    Debug.Log("Critical hit !");
+                    _enemyScript.life += Mathf.RoundToInt(okDamage * 1.25f);
+                }
+                else
+                {
+                    _enemyScript.life += okDamage;
+                }
+                    
+                _enemyScript.UpdateLifeSlider();
             }
             else
             {
                 Debug.Log("Enemy is ok");
+                _playerScript.life += okDamage;
+                _playerScript.UpdateLifeSlider();
             }
         }
         
@@ -191,14 +223,26 @@ public class BattleSystem : MonoBehaviour
 
     public void CheckEndConditions()
     {
-        Debug.Log("Vérification de victoire/défaite");
-        return;
+        if (state == BattleState.PlayerTurn)
+        {
+            if (_enemyScript.life >= _enemyScript.lifeSlider.maxValue)
+            {
+                state = BattleState.Won;
+            }
+        }
+        
+        else if (state == BattleState.EnemyTurn)
+        {
+            if (_playerScript.life >= _playerScript.lifeSlider.maxValue)
+            {
+                state = BattleState.Lost;
+            }
+        }
     }
 
     public void EnemyTurn()
     {
         int randomCardInt = Random.Range(0, 100);
-        Debug.Log(randomCardInt);
 
         if (randomCardInt <= _enemyScript.goodPercent)
         {

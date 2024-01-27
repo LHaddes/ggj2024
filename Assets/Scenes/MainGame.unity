@@ -364,11 +364,15 @@ MonoBehaviour:
   badType: 0
   cardPrefab: {fileID: 8329242372354693571, guid: e2aa9bf50469d904caa0807c83844d39, type: 3}
   timerTxt: {fileID: 809348165}
+  goodDamage: 30
+  okDamage: 20
+  badDamage: 10
   playerPrefab: {fileID: 1465643393890284714, guid: 94d784a699725d843aa0032a0759d552, type: 3}
   playerSpawnPos: {fileID: 794966552}
   playerParent: {fileID: 1526500430}
   cardZone: {fileID: 201796915}
   turnDuration: 25
+  critChance: 20
   enemyPrefab: {fileID: 6776491091912835808, guid: 36af7850918d9bd4b823ba261ffab08b, type: 3}
   enemySpawnPos: {fileID: 808987285}
   enemyParent: {fileID: 785944273}
