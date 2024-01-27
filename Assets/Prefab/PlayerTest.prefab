@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6234472163861981752}
   - component: {fileID: 2750245981517202002}
   - component: {fileID: 7594729128131530457}
+  - component: {fileID: -1130721380405191693}
   m_Layer: 0
   m_Name: PlayerTest
   m_TagString: Untagged
@@ -107,3 +108,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1130721380405191693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465643393890284714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3fb62e638606934ea99e4518560325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardList:
+  - {fileID: 11400000, guid: d8fee5c8525ac90469d7321020a4ac49, type: 2}
+  - {fileID: 11400000, guid: d75e09bf029b44046aec389e164bd876, type: 2}
+  - {fileID: 11400000, guid: 84782b9b287074a4aaa09735e75c7158, type: 2}
+  - {fileID: 11400000, guid: 515a63c12683ca143a5b3b2695f94554, type: 2}
+  - {fileID: 11400000, guid: ca53aa181c374d540b5d71085e44a99c, type: 2}

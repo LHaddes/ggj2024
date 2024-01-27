@@ -1,14 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameplayManager : MonoBehaviour
+public class Unit : MonoBehaviour
 {
-    public enum MyEnum
-    {
-        
-    }
+    public List<CardScriptable> cardList = new List<CardScriptable>();
+    
     // Start is called before the first frame update
     void Start()
     {
