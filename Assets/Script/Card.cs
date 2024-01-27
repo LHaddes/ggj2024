@@ -28,4 +28,11 @@ public class Card : MonoBehaviour
             img = cardScriptable.img;
         }
     }
+
+    public void PlayCard()
+    {
+        Debug.Log($"Player played {name} card");
+
+        StartCoroutine(BattleSystem.Instance.OnCardButton(cardScriptable));
+    }
 }

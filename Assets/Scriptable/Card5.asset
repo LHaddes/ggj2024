@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 0}
   txt: 
+  cardType: 4

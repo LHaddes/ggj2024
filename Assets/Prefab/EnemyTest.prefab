@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6299615155551270356}
   - component: {fileID: 1978397799563210967}
   - component: {fileID: 2444302593852070910}
-  - component: {fileID: 2507802536226359435}
+  - component: {fileID: -8564337234357603401}
   m_Layer: 0
   m_Name: EnemyTest
   m_TagString: Untagged
@@ -108,7 +108,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2507802536226359435
+--- !u!114 &-8564337234357603401
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6776491091912835808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 226917b7e599998479c276eb845f3a19, type: 3}
+  m_Script: {fileID: 11500000, guid: 37dbb29b8d9796d41a09ab07b0b8c09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardList: []
+  cardList:
+  - {fileID: 11400000, guid: d8fee5c8525ac90469d7321020a4ac49, type: 2}
+  - {fileID: 11400000, guid: d75e09bf029b44046aec389e164bd876, type: 2}
+  - {fileID: 11400000, guid: 84782b9b287074a4aaa09735e75c7158, type: 2}
+  - {fileID: 11400000, guid: 515a63c12683ca143a5b3b2695f94554, type: 2}
+  - {fileID: 11400000, guid: ca53aa181c374d540b5d71085e44a99c, type: 2}
+  goodPercent: 10
+  badPercent: 20

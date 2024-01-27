@@ -14,13 +14,19 @@ public class Player : Unit
         {
             int random = Random.Range(0, cardList.Count);
 
-            if (randomMemory.Contains(random))
+            while (randomMemory.Contains(random))
             {
                 random = Random.Range(0, cardList.Count);
             }
+            
 
             randomMemory.Add(random);
             playerHand.Add(cardList[random]);
         }
+    }
+
+    public void ClearHand()
+    {
+        playerHand.Clear();
     }
 }
